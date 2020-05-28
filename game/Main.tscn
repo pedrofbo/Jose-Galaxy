@@ -1,0 +1,72 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Planeta.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Plataforma.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player.gd" type="Script" id=3]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Main.gd" type="Script" id=5]
+
+[sub_resource type="SphereShape" id=1]
+
+[sub_resource type="BoxShape" id=2]
+
+[node name="Main" type="Spatial"]
+script = ExtResource( 5 )
+
+[node name="Planeta" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1.01941, 0, 0, 0, 1.01941, 0, 0, 0, 1.01941, 21, -10, 1 )
+
+[node name="Area" type="Area" parent="Planeta"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Planeta/Area"]
+transform = Transform( 12.5, 0, 0, 0, 12.5, 0, 0, 0, 12.5, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="Planeta2" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.611646, 0, 0, 0, 0.611646, 0, 0, 0, 0.611646, 21, -10, -13 )
+
+[node name="Area" type="Area" parent="Planeta2"]
+transform = Transform( 0.81, 0, 0, 0, 0.81, 0, 0, 0, 0.81, 0, 0, 1.63494 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Planeta2/Area"]
+transform = Transform( 12.5, 0, 0, 0, 12.5, 0, 0, 0, 12.5, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="Plataforma" parent="." instance=ExtResource( 2 )]
+
+[node name="Area" type="Area" parent="Plataforma"]
+transform = Transform( 1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Plataforma/Area"]
+transform = Transform( 8.1, 0, 0, 0, 8.1, 0, 0, 0, 8.1, 0, 0, 0 )
+shape = SubResource( 2 )
+
+[node name="Plataforma3" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 7.5, 13 )
+
+[node name="Area" type="Area" parent="Plataforma3"]
+transform = Transform( 1, 0, 0, 0, 0.4, 9.77524e-08, 0, 9.77524e-08, 1, 0, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Plataforma3/Area"]
+transform = Transform( 8.1, 0, 0, 0, 8.1, 0, 0, 0, 8.1, 0, 0, 0 )
+shape = SubResource( 2 )
+
+[node name="Plataforma2" parent="." instance=ExtResource( 2 )]
+transform = Transform( 9.3, 0, 0, 0, 1, 0, 0, 0, 8.8, 0, 61.5, 0 )
+
+[node name="Camera3" type="Camera" parent="."]
+transform = Transform( -1.57369e-07, -0.258819, 0.965926, -4.2167e-08, 0.965926, 0.258819, -1, 0, -1.62921e-07, 42.5, 3.5, 0 )
+
+[node name="Camera2" type="Camera" parent="."]
+transform = Transform( -1, 5.75736e-08, -1.54268e-08, 2.98023e-08, 0.707107, 0.707107, 5.16191e-08, 0.707107, -0.707107, 0, 23.5, -51.5 )
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 1.13687e-13, 1.5, 0 )
+script = ExtResource( 3 )
+
+[node name="RayCast" type="RayCast" parent="Player"]
+transform = Transform( 4.62, 0, 0, 0, 4.62, 0, 0, 0, 4.62, 0, 0, 0 )
+[connection signal="body_entered" from="Planeta/Area" to="Player" method="_on_Area_body_entered"]
+[connection signal="body_entered" from="Planeta2/Area" to="Player" method="_on_Area_body_entered_planeta2"]
+[connection signal="body_entered" from="Plataforma/Area" to="Player" method="_on_Area_body_entered_plat"]
+[connection signal="body_entered" from="Plataforma3/Area" to="Player" method="_on_Area_body_entered_plat2"]
