@@ -15,11 +15,11 @@ albedo_color = Color( 0.831373, 0.164706, 0.85098, 1 )
 [node name="Player" type="KinematicBody"]
 transform = Transform( 0.999999, -0.00100375, 0.00127916, 0.00100614, 0.999998, -0.00186981, -0.00127728, 0.00187109, 0.999997, 0, 0, 0 )
 
-[node name="MeshInstance" type="MeshInstance" parent="."]
+[node name="ModelMesh" type="MeshInstance" parent="."]
 mesh = SubResource( 1 )
 material/0 = SubResource( 2 )
 
-[node name="CollisionShape" type="CollisionShape" parent="."]
+[node name="Collision" type="CollisionShape" parent="."]
 shape = SubResource( 3 )
 
 [node name="Camera" type="Camera" parent="."]

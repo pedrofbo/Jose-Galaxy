@@ -6,7 +6,7 @@ var gravity = -300
 var velocity = Vector3()
 var camera
 var planet
-var planet_num = 0
+var planet_num = 1
 var up_direction = Vector3()
 var gravity_up = Vector3()
 var prev_input
@@ -54,7 +54,7 @@ func new_look_at(target, tr):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	camera = get_node("Camera").get_global_transform()
-	planet = get_parent().get_node("Plataforma")
+	planet = get_parent().get_node("EntryPlatform")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -95,16 +95,16 @@ func _physics_process(delta):
 	up_direction = transform.basis.y
 	
 	direction = Vector3(0, 0, 0)
-	if Input.is_action_pressed("move_fw"):
+	if Input.is_action_pressed("move_right"):
 		direction += transform.basis[2]
 		prev_input = 1
-	if Input.is_action_pressed("move_back"):
+	if Input.is_action_pressed("move_left"):
 		direction += -transform.basis[2]
 		prev_input = 1
-	if Input.is_action_pressed("move_left"):
+	if Input.is_action_pressed("move_fw"):
 		direction += transform.basis[0]
 		prev_input = 2
-	if Input.is_action_pressed("move_right"):
+	if Input.is_action_pressed("move_back"):
 		direction += -transform.basis[0]
 		prev_input = 2
 	
@@ -114,7 +114,7 @@ func _physics_process(delta):
 	velocity = direction
 	velocity += gravity * delta * up_direction
 	if is_on_floor() and Input.is_key_pressed(KEY_SPACE):
-			velocity += 400 * up_direction
+			velocity += 500 * up_direction
 	
 	velocity = move_and_slide(velocity, up_direction)
 
@@ -129,9 +129,9 @@ func _on_Area_body_entered(body):
 		planet_num = 3
 
 
-func _on_Area_body_entered_plat(body):
+func _OnPlatBodyEntered(body):
 	if not is_on_floor():
-		planet = get_parent().get_node("Plataforma")
+		planet = get_parent().get_node("EntryPlatform")
 		print("yoho")
 		planet_num = 1
 		print(up_direction)
@@ -148,5 +148,5 @@ func _on_Area_body_entered_plat2(body):
 func _on_Area_body_entered_planeta2(body):
 	if not is_on_floor():
 		planet = get_parent().get_node("Planeta2")
-		print("yo")
+		print("yoshe")
 		planet_num = 3
