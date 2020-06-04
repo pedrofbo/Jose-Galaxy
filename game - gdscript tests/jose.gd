@@ -83,7 +83,7 @@ func _physics_process(delta):
 #	if is_on_floor() and Input.is_key_pressed(KEY_SPACE):
 #			velocity += 400 * up_direction
 	if is_on_floor() and Input.is_key_pressed(KEY_SPACE):
-		velocity.y = 15
+		velocity.y = 20
 
 	velocity = transform.basis * velocity
 	velocity = move_and_slide(velocity, up_direction)
