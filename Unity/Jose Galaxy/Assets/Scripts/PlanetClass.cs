@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlanetClass : MonoBehaviour {
+public class PlanetClass : MonoBehaviour
+{
 
-	public int planetClass;
+    public int planetClass;
 
-	private void OnTriggerEnter(Collider other)
-	{
-		other.GetComponent<Jose>().planetClass = this.planetClass;
-	}
+    private void OnTriggerEnter(Collider collider)
+    {
+        collider.GetComponent<Player>().planetClass = this.planetClass;
+    }
 }
