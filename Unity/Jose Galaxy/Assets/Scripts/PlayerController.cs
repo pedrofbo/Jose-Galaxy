@@ -1,33 +1,22 @@
 ﻿using UnityEngine;
 
-public enum PlanetType
+public class PlayerController : MonoBehaviour
 {
-    Spherical = 1,
-    Platform = 2,
-}
-
-public class Jose : MonoBehaviour
-{
-
-    public GameObject planet;
+    public float speed = 4f;
+    public float jumpForce = 1.2f;
     public PlanetType planetType;
 
-    public float speed = 4;
-    public float jumpAmplitude = 1.2f;
-
+    private GameObject planet;
     private Animator animator;
-
-
-    float gravity = 100;
-    bool OnGround = false;
-
-    float distanceToGround;
-    Vector3 groundNormal;
+    private float gravity = 100f;
+    private bool OnGround = false;
+    private float distanceToGround;
+    private Vector3 groundNormalVector;
 
     private Rigidbody rb;
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
@@ -36,7 +25,7 @@ public class Jose : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
 
         //MOVEMENT
@@ -66,29 +55,7 @@ public class Jose : MonoBehaviour
 
         Jump();
 
-        //GroundControl
-        RaycastHit hit = new RaycastHit();
-        if (Physics.Raycast(transform.position, -transform.up, out hit, 10))
-        {
-
-            distanceToGround = hit.distance;
-            groundNormal = hit.normal;
-
-            if (distanceToGround <= 0.05f)
-            {
-                OnGround = true;
-            }
-            else
-            {
-                OnGround = false;
-            }
-
-
-        }
-
-
         //GRAVITY and ROTATION
-
         Vector3 gravityDirection;
         if (planetType == PlanetType.Spherical)
         {
@@ -99,15 +66,14 @@ public class Jose : MonoBehaviour
             gravityDirection = (planet.transform.up).normalized;
         }
 
-        if (OnGround == false)
+        if (!IsGrounded())
         {
             rb.AddForce(gravityDirection * -gravity);
         }
 
-        Quaternion toRotation = Quaternion.FromToRotation(transform.up, groundNormal) * transform.rotation;
+        Quaternion toRotation = Quaternion.FromToRotation(transform.up, groundNormalVector) * transform.rotation;
         transform.rotation = toRotation;
     }
-
 
     //CHANGE PLANET
     private void OnTriggerEnter(Collider collision)
@@ -138,12 +104,30 @@ public class Jose : MonoBehaviour
 
     private void Jump()
     {
-        int jumpScale = 40000;
+        int jumpAmplitude = 5;
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            rb.AddForce(transform.up * jumpScale * jumpAmplitude * Time.deltaTime);
-            //animator.SetInteger("AnimPlayer", 2);
+            animator.SetInteger("AnimPlayer", 2);
+            rb.AddForce(Vector3.up * jumpAmplitude * jumpForce, ForceMode.Impulse);
+
+        }
+    }
+
+    private bool IsGrounded()
+    {
+        RaycastHit hit = new RaycastHit();
+        if (Physics.Raycast(transform.position, -transform.up, out hit, 10))
+        {
+
+            var distanceToGround = hit.distance;
+            var groundNormalVector = hit.normal;
+
+            return distanceToGround <= 0.2f;
+        }
+        else
+        {
+            return false;
         }
     }
 }
