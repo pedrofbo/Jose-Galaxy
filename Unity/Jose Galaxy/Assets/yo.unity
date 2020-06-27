@@ -838,11 +838,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ccd3cd4a78309418436c6f37ddcc7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Planet: {fileID: 891743418}
-  PlayerPlaceholder: {fileID: 0}
-  planetClass: 0
+  planet: {fileID: 0}
+  planetType: 0
   speed: 4
-  JumpHeight: 1.6
+  jumpAmplitude: 1
 --- !u!65 &1423269166
 BoxCollider:
   m_ObjectHideFlags: 0
