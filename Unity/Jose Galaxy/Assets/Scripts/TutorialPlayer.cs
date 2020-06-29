@@ -131,7 +131,7 @@ public class TutorialPlayer : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.transform != Planet.transform)
+        if (collision.transform != Planet.transform && collision.GetComponent<Planet>())
         {
             Planet = collision.transform.gameObject;
 
