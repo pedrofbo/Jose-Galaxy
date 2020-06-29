@@ -7,6 +7,7 @@ public class TutorialPlayer : MonoBehaviour
 
     public GameObject Planet;
     public GameObject PlayerPlaceholder;
+    public PlanetType planetType;
 
 
     public float speed = 4;
@@ -26,6 +27,11 @@ public class TutorialPlayer : MonoBehaviour
 
     private Animator animator;
 
+    private Quaternion targetRotation;
+    private float angle;
+    private Transform cam;
+    public float rotationSpeed = 10f;
+
 
 
     private Rigidbody rb;
@@ -37,15 +43,17 @@ public class TutorialPlayer : MonoBehaviour
         rb.freezeRotation = true;
         col = GetComponent<CapsuleCollider>();
         animator = gameObject.GetComponentInChildren<Animator>();
+        Planet = GameObject.Find("initialPlatform");
+        cam = PlayerPlaceholder.transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector2 input;
+        //Vector2 input;
         isGrounded = IsGrounded();
 
-        //MOVEMENT
+        /*//MOVEMENT
 
         float x = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
         float z = Input.GetAxis("Vertical") * Time.deltaTime * speed;
@@ -72,14 +80,16 @@ public class TutorialPlayer : MonoBehaviour
         else
         {
             animator?.SetInteger("AnimPlayer", 0);
-        }
+        }*/
+
+        Move();
 
         //Jump
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
             // animator?.SetInteger("AnimPlayer", 2);
-            rb.AddForce(transform.up * 40000 * JumpHeight * Time.deltaTime);
+            rb.AddForce(transform.up * 8000 * JumpHeight * Time.deltaTime);
 
         }
 
@@ -93,7 +103,7 @@ public class TutorialPlayer : MonoBehaviour
             distanceToGround = hit.distance;
             Groundnormal = hit.normal;
 
-            if (distanceToGround <= 0.4f)
+            if (distanceToGround <= 1.5f)
             {
                 OnGround = true;
             }
@@ -108,11 +118,19 @@ public class TutorialPlayer : MonoBehaviour
 
         //GRAVITY and ROTATION
 
-        Vector3 gravDirection = (transform.position - Planet.transform.position).normalized;
+        Vector3 gravityDirection;
+        if (planetType == PlanetType.Spherical)
+        {
+            gravityDirection = (transform.position - Planet.transform.position).normalized;
+        }
+        else
+        {
+            gravityDirection = (Planet.transform.up).normalized;
+        }
 
         if (OnGround == false)
         {
-            rb.AddForce(gravDirection * -gravity);
+            rb.AddForce(gravityDirection * -gravity);
 
         }
 
@@ -143,7 +161,8 @@ public class TutorialPlayer : MonoBehaviour
             rb.AddForce(gravDirection * gravity);
 
 
-            // PlayerPlaceholder.GetComponent<TutorialPlayerPlaceholder>().NewPlanet(Planet);
+            PlayerPlaceholder.GetComponent<PlayerPlaceholder>().NewPlanet(Planet);
+            PlayerPlaceholder.GetComponent<PlayerPlaceholder>().planetType = planetType;
 
         }
     }
@@ -154,6 +173,46 @@ public class TutorialPlayer : MonoBehaviour
             new Vector3(col.bounds.center.x, col.bounds.min.y, col.bounds.center.z),
             col.radius * .8f,
             groundLayers);
+    }
+
+    private void Move()
+    {
+        Vector2 input;
+        //get inputs
+        input.x = Input.GetAxisRaw("Horizontal");
+        input.y = Input.GetAxisRaw("Vertical");
+
+        if (input.x != 0 || input.y != 0)
+        {
+            animator?.SetInteger("AnimPlayer", 1);
+        }
+        else
+        {
+            animator?.SetInteger("AnimPlayer", 0);
+        }
+
+        if (Mathf.Abs(input.x) < 1 && Mathf.Abs(input.y) < 1) return;
+
+        //calculate direction
+        angle = Mathf.Atan2(input.x, input.y);
+        angle = Mathf.Rad2Deg * angle;
+        angle += cam.eulerAngles.y;
+
+        //rotate
+        targetRotation = Quaternion.Euler(0, angle, 0);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+
+        if (input != Vector2.zero)
+        {
+            animator?.SetInteger("AnimPlayer", 1);
+        }
+        else
+        {
+            animator?.SetInteger("AnimPlayer", 0);
+        }
+
+        //transform.Translate(x, 0, z);
+        transform.position += transform.forward * speed * Time.deltaTime;
     }
 
 }
