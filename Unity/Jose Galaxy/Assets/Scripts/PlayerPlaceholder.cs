@@ -25,7 +25,7 @@ public class PlayerPlaceholder : MonoBehaviour
         float x = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
         float z = Input.GetAxis("Vertical") * Time.deltaTime * speed;
  
-        transform.Translate(x, 0, z);
+        transform.Translate(x, 0, z);*/
  
         //Local Rotation
  
@@ -37,7 +37,7 @@ public class PlayerPlaceholder : MonoBehaviour
         {
  
             transform.Rotate(0, -150 * Time.deltaTime, 0);
-        }*/
+        }
  
         Vector3 gravDirection;
 		if (planetType == PlanetType.Spherical)
