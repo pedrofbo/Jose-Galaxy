@@ -223,22 +223,22 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 9b88aae9c0adef54ab4ff2a7da04399f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.07
+      value: 66.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9b88aae9c0adef54ab4ff2a7da04399f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.63
+      value: 152.23999
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9b88aae9c0adef54ab4ff2a7da04399f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.34
+      value: 83.742
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9b88aae9c0adef54ab4ff2a7da04399f,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9b88aae9c0adef54ab4ff2a7da04399f,
         type: 3}
@@ -248,12 +248,12 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 9b88aae9c0adef54ab4ff2a7da04399f,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9b88aae9c0adef54ab4ff2a7da04399f,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9b88aae9c0adef54ab4ff2a7da04399f,
         type: 3}
@@ -268,27 +268,27 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 9b88aae9c0adef54ab4ff2a7da04399f,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9b88aae9c0adef54ab4ff2a7da04399f,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9b88aae9c0adef54ab4ff2a7da04399f,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.49802837
+      value: 1.2464156
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9b88aae9c0adef54ab4ff2a7da04399f,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.49802837
+      value: 1.2464156
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9b88aae9c0adef54ab4ff2a7da04399f,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.49802837
+      value: 1.2464156
       objectReference: {fileID: 0}
     - target: {fileID: -2016559541728264541, guid: 9b88aae9c0adef54ab4ff2a7da04399f,
         type: 3}
@@ -628,6 +628,7 @@ GameObject:
   m_Component:
   - component: {fileID: 220138449}
   - component: {fileID: 220138450}
+  - component: {fileID: 220138451}
   m_Layer: 0
   m_Name: sideGravity2
   m_TagString: Untagged
@@ -643,8 +644,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 220138448}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0.53}
-  m_LocalScale: {x: 1, y: 0.5442, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.711}
+  m_LocalScale: {x: 1, y: 0.4691385, z: 1}
   m_Children: []
   m_Father: {fileID: 1547746262}
   m_RootOrder: 1
@@ -662,6 +663,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &220138451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220138448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb48f8b269c50c04497b43e46a3566b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planetType: 2
 --- !u!1 &227112454
 GameObject:
   m_ObjectHideFlags: 0
@@ -1200,14 +1214,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 576371788}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.5, y: 0.12, z: -9.28}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0.7071068, w: 0}
+  m_LocalPosition: {x: 64.98399, y: 152.7, z: 81.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1519268899}
   m_Father: {fileID: 0}
   m_RootOrder: 16
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 180}
 --- !u!1 &603587998
 GameObject:
   m_ObjectHideFlags: 0
@@ -1218,6 +1232,7 @@ GameObject:
   m_Component:
   - component: {fileID: 603587999}
   - component: {fileID: 603588000}
+  - component: {fileID: 603588001}
   m_Layer: 0
   m_Name: upGravity
   m_TagString: Untagged
@@ -1252,6 +1267,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &603588001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 603587998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb48f8b269c50c04497b43e46a3566b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planetType: 2
 --- !u!1 &661963419
 GameObject:
   m_ObjectHideFlags: 0
@@ -1408,6 +1436,7 @@ GameObject:
   m_Component:
   - component: {fileID: 691191354}
   - component: {fileID: 691191355}
+  - component: {fileID: 691191356}
   m_Layer: 0
   m_Name: sideGravity2
   m_TagString: Untagged
@@ -1442,6 +1471,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &691191356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 691191353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb48f8b269c50c04497b43e46a3566b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planetType: 2
 --- !u!1 &713079671
 GameObject:
   m_ObjectHideFlags: 0
@@ -1539,6 +1581,25 @@ Transform:
   m_Father: {fileID: 1415266047}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: -0.13900001, y: -19.089, z: -1.5180001}
+--- !u!1 &720261075 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d0dfd9e102edc1245bc33066c7c7ff4e,
+    type: 3}
+  m_PrefabInstance: {fileID: 986777432}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &720261076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 720261075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb48f8b269c50c04497b43e46a3566b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planetType: 2
 --- !u!1 &747882442
 GameObject:
   m_ObjectHideFlags: 0
@@ -1549,6 +1610,7 @@ GameObject:
   m_Component:
   - component: {fileID: 747882443}
   - component: {fileID: 747882444}
+  - component: {fileID: 747882445}
   m_Layer: 0
   m_Name: sideGravity1
   m_TagString: Untagged
@@ -1583,6 +1645,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &747882445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 747882442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb48f8b269c50c04497b43e46a3566b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planetType: 2
 --- !u!1 &763318008
 GameObject:
   m_ObjectHideFlags: 0
@@ -1962,6 +2037,7 @@ GameObject:
   m_Component:
   - component: {fileID: 950763918}
   - component: {fileID: 950763919}
+  - component: {fileID: 950763920}
   m_Layer: 0
   m_Name: sideGravity1
   m_TagString: Untagged
@@ -1996,6 +2072,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &950763920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 950763917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb48f8b269c50c04497b43e46a3566b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planetType: 2
 --- !u!1 &951140474
 GameObject:
   m_ObjectHideFlags: 0
@@ -2102,6 +2191,7 @@ GameObject:
   m_Component:
   - component: {fileID: 954282166}
   - component: {fileID: 954282167}
+  - component: {fileID: 954282168}
   m_Layer: 0
   m_Name: sideGravity2
   m_TagString: Untagged
@@ -2136,6 +2226,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &954282168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 954282165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb48f8b269c50c04497b43e46a3566b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planetType: 2
 --- !u!1 &977060413
 GameObject:
   m_ObjectHideFlags: 0
@@ -2966,6 +3069,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1044122576}
   - component: {fileID: 1044122577}
+  - component: {fileID: 1044122578}
   m_Layer: 0
   m_Name: sideGravity1
   m_TagString: Untagged
@@ -3000,6 +3104,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1044122578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1044122575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb48f8b269c50c04497b43e46a3566b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planetType: 2
 --- !u!1 &1074846663
 GameObject:
   m_ObjectHideFlags: 0
@@ -3010,6 +3127,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1074846664}
   - component: {fileID: 1074846665}
+  - component: {fileID: 1074846666}
   m_Layer: 0
   m_Name: sideGravity1
   m_TagString: Untagged
@@ -3044,6 +3162,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1074846666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074846663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb48f8b269c50c04497b43e46a3566b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planetType: 2
 --- !u!1 &1118753582
 GameObject:
   m_ObjectHideFlags: 0
@@ -3054,6 +3185,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1118753583}
   - component: {fileID: 1118753584}
+  - component: {fileID: 1118753585}
   m_Layer: 0
   m_Name: upGravity
   m_TagString: Untagged
@@ -3088,6 +3220,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1118753585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1118753582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb48f8b269c50c04497b43e46a3566b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planetType: 2
 --- !u!1 &1138310875
 GameObject:
   m_ObjectHideFlags: 0
@@ -3186,6 +3331,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1147699931}
   - component: {fileID: 1147699932}
+  - component: {fileID: 1147699933}
   m_Layer: 0
   m_Name: sideGravity2
   m_TagString: Untagged
@@ -3220,6 +3366,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1147699933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147699930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb48f8b269c50c04497b43e46a3566b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planetType: 2
 --- !u!1 &1158441545
 GameObject:
   m_ObjectHideFlags: 0
@@ -3642,6 +3801,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1305277737}
   - component: {fileID: 1305277738}
+  - component: {fileID: 1305277739}
   m_Layer: 0
   m_Name: downGravity
   m_TagString: Untagged
@@ -3658,7 +3818,7 @@ Transform:
   m_GameObject: {fileID: 1305277736}
   m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: -1.68, z: 0}
-  m_LocalScale: {x: 1, y: 4.428799, z: 1}
+  m_LocalScale: {x: 1, y: 2.5380561, z: 1}
   m_Children: []
   m_Father: {fileID: 1547746262}
   m_RootOrder: 3
@@ -3676,6 +3836,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1305277739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305277736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb48f8b269c50c04497b43e46a3566b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planetType: 2
 --- !u!1 &1335249425
 GameObject:
   m_ObjectHideFlags: 0
@@ -3686,6 +3859,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1335249426}
   - component: {fileID: 1335249427}
+  - component: {fileID: 1335249428}
   m_Layer: 0
   m_Name: sideGravity3
   m_TagString: Untagged
@@ -3720,6 +3894,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1335249428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1335249425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb48f8b269c50c04497b43e46a3566b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planetType: 2
 --- !u!1 &1374298366
 GameObject:
   m_ObjectHideFlags: 0
@@ -3730,6 +3917,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1374298367}
   - component: {fileID: 1374298368}
+  - component: {fileID: 1374298369}
   m_Layer: 0
   m_Name: upGravity
   m_TagString: Untagged
@@ -3764,6 +3952,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1374298369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1374298366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb48f8b269c50c04497b43e46a3566b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planetType: 2
 --- !u!1 &1377468322
 GameObject:
   m_ObjectHideFlags: 0
@@ -3774,6 +3975,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1377468323}
   - component: {fileID: 1377468324}
+  - component: {fileID: 1377468325}
   m_Layer: 0
   m_Name: sideGravity2
   m_TagString: Untagged
@@ -3808,6 +4010,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1377468325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1377468322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb48f8b269c50c04497b43e46a3566b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planetType: 2
 --- !u!1 &1415266046
 GameObject:
   m_ObjectHideFlags: 0
@@ -4009,7 +4224,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1519268896}
   m_LocalRotation: {x: 0.20600474, y: -0, z: -0, w: 0.9785511}
-  m_LocalPosition: {x: -0, y: 5, z: -6.999999}
+  m_LocalPosition: {x: -1.48, y: 6.9, z: -11.31}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 576371790}
@@ -4451,6 +4666,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1723581756}
   - component: {fileID: 1723581757}
+  - component: {fileID: 1723581758}
   m_Layer: 0
   m_Name: upGravity
   m_TagString: Untagged
@@ -4485,6 +4701,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1723581758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1723581755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb48f8b269c50c04497b43e46a3566b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planetType: 2
 --- !u!1 &1724779098
 GameObject:
   m_ObjectHideFlags: 0
@@ -4775,11 +5004,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb827cb02ef1084fb3a6a88165e7fed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Planet: {fileID: 1721327501}
+  Planet: {fileID: 1305277736}
   PlayerPlaceholder: {fileID: 576371788}
   planetType: 2
-  speed: 4
-  JumpHeight: 3
+  gravDir: {x: 0, y: 0, z: 0}
+  speed: 20
+  JumpHeight: 10
+  gravity: 1000
   OnGround: 0
   isGrounded: 0
   groundLayers:
@@ -4828,7 +5059,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &1870734284
 GameObject:
@@ -4884,6 +5115,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1951490257}
   - component: {fileID: 1951490258}
+  - component: {fileID: 1951490259}
   m_Layer: 0
   m_Name: sideGravity1
   m_TagString: Untagged
@@ -4899,8 +5131,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1951490256}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: -0.558}
-  m_LocalScale: {x: 1, y: 0.5442, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.666}
+  m_LocalScale: {x: 1, y: 0.34770572, z: 1}
   m_Children: []
   m_Father: {fileID: 1547746262}
   m_RootOrder: 0
@@ -4918,6 +5150,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1951490259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1951490256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb48f8b269c50c04497b43e46a3566b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planetType: 2
 --- !u!1 &1996775109
 GameObject:
   m_ObjectHideFlags: 0
@@ -5292,6 +5537,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2085047603}
   - component: {fileID: 2085047604}
+  - component: {fileID: 2085047605}
   m_Layer: 0
   m_Name: upGravity
   m_TagString: Untagged
@@ -5307,8 +5553,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2085047602}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.8, z: 0}
-  m_LocalScale: {x: 1, y: 4.428799, z: 1}
+  m_LocalPosition: {x: 0, y: 2.35, z: 0}
+  m_LocalScale: {x: 1, y: 3.732415, z: 1}
   m_Children: []
   m_Father: {fileID: 1547746262}
   m_RootOrder: 2
@@ -5326,6 +5572,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2085047605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2085047602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb48f8b269c50c04497b43e46a3566b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planetType: 2
 --- !u!1 &2141049904
 GameObject:
   m_ObjectHideFlags: 0
@@ -5336,6 +5595,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2141049905}
   - component: {fileID: 2141049906}
+  - component: {fileID: 2141049907}
   m_Layer: 0
   m_Name: sideGravity4
   m_TagString: Untagged
@@ -5370,6 +5630,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2141049907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2141049904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb48f8b269c50c04497b43e46a3566b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planetType: 2
 --- !u!23 &1025461212870979015
 MeshRenderer:
   m_ObjectHideFlags: 0
