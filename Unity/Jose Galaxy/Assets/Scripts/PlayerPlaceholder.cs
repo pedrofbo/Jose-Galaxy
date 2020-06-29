@@ -18,10 +18,10 @@ public class PlayerPlaceholder : MonoBehaviour
         //SMOOTH
 		
         //POSITION
-        //transform.position = Vector3.Lerp(transform.position, Player.transform.position, 0.1f);
+        transform.position = Vector3.Lerp(transform.position, Player.transform.position, 0.1f);
         //transform.position = Player.transform.position;
 
-        speed = Player.GetComponent<TutorialPlayer>().speed;
+        /*speed = Player.GetComponent<TutorialPlayer>().speed;
         float x = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
         float z = Input.GetAxis("Vertical") * Time.deltaTime * speed;
  
@@ -37,7 +37,7 @@ public class PlayerPlaceholder : MonoBehaviour
         {
  
             transform.Rotate(0, -150 * Time.deltaTime, 0);
-        }
+        }*/
  
         Vector3 gravDirection;
 		if (planetType == PlanetType.Spherical)
@@ -58,8 +58,9 @@ public class PlayerPlaceholder : MonoBehaviour
     }
  
  
-    public void NewPlanet(GameObject newPlanet) {
+    public void NewPlanet(GameObject newPlanet, PlanetType newPlanetType) {
  
+        planetType = newPlanetType;
         Planet = newPlanet;
     }
  

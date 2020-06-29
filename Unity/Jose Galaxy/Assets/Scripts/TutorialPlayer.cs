@@ -9,11 +9,12 @@ public class TutorialPlayer : MonoBehaviour
     public GameObject PlayerPlaceholder;
     public PlanetType planetType;
 
+    public Vector3 gravDir;
 
     public float speed = 4;
     public float JumpHeight = 1.2f;
 
-    float gravity = 100f;
+    public float gravity = 100f;
     public bool OnGround = false;
 
     public bool isGrounded;
@@ -43,7 +44,7 @@ public class TutorialPlayer : MonoBehaviour
         rb.freezeRotation = true;
         col = GetComponent<CapsuleCollider>();
         animator = gameObject.GetComponentInChildren<Animator>();
-        Planet = GameObject.Find("initialPlatform");
+        //Planet = GameObject.Find("initialPlatform");
         cam = PlayerPlaceholder.transform;
     }
 
@@ -53,36 +54,16 @@ public class TutorialPlayer : MonoBehaviour
         //Vector2 input;
         isGrounded = IsGrounded();
 
-        /*//MOVEMENT
-
-        float x = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
-        float z = Input.GetAxis("Vertical") * Time.deltaTime * speed;
-
-        transform.Translate(x, 0, z);
-
-        //Local Rotation
-
-        if (Input.GetKey(KeyCode.E))
+        /*if (planetType == planetType.Spherical)
         {
-
-            transform.Rotate(0, 150 * Time.deltaTime, 0);
-        }
-        if (Input.GetKey(KeyCode.Q))
-        {
-
-            transform.Rotate(0, -150 * Time.deltaTime, 0);
-        }
-
-        if (x != 0 || z != 0)
-        {
-            animator?.SetInteger("AnimPlayer", 1);
+            MoveSphere();
         }
         else
         {
-            animator?.SetInteger("AnimPlayer", 0);
+            Move();
         }*/
 
-        Move();
+        Move2();
 
         //Jump
 
@@ -103,7 +84,7 @@ public class TutorialPlayer : MonoBehaviour
             distanceToGround = hit.distance;
             Groundnormal = hit.normal;
 
-            if (distanceToGround <= 1.5f)
+            if (distanceToGround <= 0.5f)
             {
                 OnGround = true;
             }
@@ -128,11 +109,13 @@ public class TutorialPlayer : MonoBehaviour
             gravityDirection = (Planet.transform.up).normalized;
         }
 
-        if (OnGround == false)
-        {
+        gravDir = gravityDirection.normalized;
+
+        //if (OnGround == false)
+        //{
             rb.AddForce(gravityDirection * -gravity);
 
-        }
+        //}
 
         //
 
@@ -152,17 +135,24 @@ public class TutorialPlayer : MonoBehaviour
         {
             Planet = collision.transform.gameObject;
 
-            Vector3 gravDirection = (transform.position - Planet.transform.position).normalized;
+            Vector3 gravityDirection;
+            if (planetType == PlanetType.Spherical)
+            {
+                gravityDirection = (transform.position - Planet.transform.position).normalized;
+            }
+            else
+            {
+                gravityDirection = (Planet.transform.up).normalized;
+            }
 
-            Quaternion toRotation = Quaternion.FromToRotation(transform.up, gravDirection) * transform.rotation;
+            Quaternion toRotation = Quaternion.FromToRotation(transform.up, gravityDirection) * transform.rotation;
             transform.rotation = toRotation;
 
             rb.velocity = Vector3.zero;
-            rb.AddForce(gravDirection * gravity);
+            rb.AddForce(gravityDirection * gravity);
 
 
-            PlayerPlaceholder.GetComponent<PlayerPlaceholder>().NewPlanet(Planet);
-            PlayerPlaceholder.GetComponent<PlayerPlaceholder>().planetType = planetType;
+            PlayerPlaceholder.GetComponent<PlayerPlaceholder>().NewPlanet(Planet, planetType);
 
         }
     }
@@ -196,7 +186,7 @@ public class TutorialPlayer : MonoBehaviour
         //calculate direction
         angle = Mathf.Atan2(input.x, input.y);
         angle = Mathf.Rad2Deg * angle;
-        angle += cam.eulerAngles.y;
+        angle += cam.localEulerAngles.y;
 
         //rotate
         targetRotation = Quaternion.Euler(0, angle, 0);
@@ -211,8 +201,40 @@ public class TutorialPlayer : MonoBehaviour
             animator?.SetInteger("AnimPlayer", 0);
         }
 
-        //transform.Translate(x, 0, z);
-        transform.position += transform.forward * speed * Time.deltaTime;
+        transform.Translate(0, 0, speed * Time.deltaTime);
+        //transform.position += transform.forward * speed * Time.deltaTime;
+    }
+
+    private void Move2()
+    {
+        //MOVEMENT
+
+        float x = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
+        float z = Input.GetAxis("Vertical") * Time.deltaTime * speed;
+
+        transform.Translate(x, 0, z);
+
+        //Local Rotation
+
+        if (Input.GetKey(KeyCode.E))
+        {
+
+            transform.Rotate(0, 150 * Time.deltaTime, 0);
+        }
+        if (Input.GetKey(KeyCode.Q))
+        {
+
+            transform.Rotate(0, -150 * Time.deltaTime, 0);
+        }
+
+        if (x != 0 || z != 0)
+        {
+            animator?.SetInteger("AnimPlayer", 1);
+        }
+        else
+        {
+            animator?.SetInteger("AnimPlayer", 0);
+        }
     }
 
 }

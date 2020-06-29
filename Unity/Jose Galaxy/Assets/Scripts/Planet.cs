@@ -8,6 +8,7 @@ public class Planet : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        collider.GetComponent<PlayerController>().planetType = planetType;
+        collider.GetComponent<TutorialPlayer>().planetType = planetType;
+
     }
 }
