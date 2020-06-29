@@ -6,12 +6,12 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 1.2f;
     public PlanetType planetType;
     public float rotationSpeed = 10f;
+    public bool isGrounded;
 
     private GameObject planet;
     private Animator animator;
-    private float gravity = 1000f;
+    private float gravity = 5f;
     private bool OnGround = false;
-    private float distanceToGround;
     private Vector3 groundNormalVector;
 
     //movement variables
@@ -30,14 +30,20 @@ public class PlayerController : MonoBehaviour
         planetType = PlanetType.Platform;
         animator = gameObject.GetComponentInChildren<Animator>();
         cam = Camera.main.transform;
+        planet = GameObject.Find("InitialPlatform");
     }
 
     // Update is called once per frame
     public void Update()
     {
+        isGrounded = IsGrounded();
+
         Move2();
 
         Jump();
+
+        Quaternion toRotation = Quaternion.FromToRotation(transform.up, groundNormalVector) * transform.rotation;
+        transform.rotation = toRotation;
 
         //GRAVITY and ROTATION
         Vector3 gravityDirection;
@@ -50,11 +56,11 @@ public class PlayerController : MonoBehaviour
             gravityDirection = (planet.transform.up).normalized;
         }
 
-        rb.AddForce(gravityDirection * -gravity);
-        // if (!IsGrounded())
-        // {
 
-        // }
+        if (!IsGrounded())
+        {
+            rb.AddForce(gravityDirection * -gravity);
+        }
     }
 
     //CHANGE PLANET
@@ -62,7 +68,7 @@ public class PlayerController : MonoBehaviour
     {
         planet = collision.transform.gameObject;
 
-        if (collision.transform != planet?.transform)
+        if (collision.transform != planet?.transform && !IsGrounded())
         {
             Vector3 gravityDirection;
             if (planetType == PlanetType.Spherical)
@@ -75,6 +81,7 @@ public class PlayerController : MonoBehaviour
             }
 
             Quaternion toRotation = Quaternion.FromToRotation(transform.up, gravityDirection) * transform.rotation;
+            print(toRotation);
             transform.rotation = toRotation;
 
             rb.velocity = Vector3.zero;
@@ -85,12 +92,12 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        int jumpAmplitude = 5;
+        int jumpAmplitude = 500;
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (IsGrounded() && Input.GetKeyDown(KeyCode.Space))
         {
-            animator.SetInteger("AnimPlayer", 2);
-            rb.AddForce(Vector3.up * jumpAmplitude * jumpForce, ForceMode.Impulse);
+            animator?.SetInteger("AnimPlayer", 2);
+            rb.AddForce(Vector3.up * jumpAmplitude * jumpForce);
 
         }
     }
@@ -102,9 +109,9 @@ public class PlayerController : MonoBehaviour
         {
 
             var distanceToGround = hit.distance;
-            var groundNormalVector = hit.normal;
+            groundNormalVector = hit.normal;
 
-            return distanceToGround <= 0.2f;
+            return distanceToGround <= 0.5f;
         }
         else
         {
@@ -131,11 +138,11 @@ public class PlayerController : MonoBehaviour
 
         if (input != Vector2.zero)
         {
-            animator.SetInteger("AnimPlayer", 1);
+            animator?.SetInteger("AnimPlayer", 1);
         }
         else
         {
-            animator.SetInteger("AnimPlayer", 0);
+            animator?.SetInteger("AnimPlayer", 0);
         }
 
         //transform.Translate(x, 0, z);
@@ -150,11 +157,11 @@ public class PlayerController : MonoBehaviour
 
         if (z != 0)
         {
-            animator.SetInteger("AnimPlayer", 1);
+            animator?.SetInteger("AnimPlayer", 1);
         }
         else
         {
-            animator.SetInteger("AnimPlayer", 0);
+            animator?.SetInteger("AnimPlayer", 0);
         }
 
         transform.Translate(x, 0, z);
@@ -169,7 +176,7 @@ public class PlayerController : MonoBehaviour
             transform.Rotate(0, -150 * Time.deltaTime, 0);
         }
 
-        Quaternion toRotation = Quaternion.FromToRotation(transform.up, groundNormalVector) * transform.rotation;
-        transform.rotation = toRotation;
+        // Quaternion toRotation = Quaternion.FromToRotation(transform.up, groundNormalVector) * transform.rotation;
+        // transform.rotation = toRotation;
     }
 }

@@ -208,11 +208,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3288432}
   m_LocalRotation: {x: 0.27631482, y: -0, z: -0, w: 0.9610672}
-  m_LocalPosition: {x: -9.644631, y: 12.268199, z: -19.968927}
-  m_LocalScale: {x: 11.23729, y: 11.237282, z: 11.237282}
+  m_LocalPosition: {x: -1.6015973, y: 2.2913256, z: -7.4812407}
+  m_LocalScale: {x: 0.96298033, y: 0.9629809, z: 0.9629809}
   m_Children: []
-  m_Father: {fileID: 1266865523}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 32.081, y: 0, z: 0}
 --- !u!114 &3288438
 MonoBehaviour:
@@ -422,7 +422,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 540487710}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.7677283, y: 0.725, z: 0.34114456}
+  m_LocalPosition: {x: -1.54, y: 0.725, z: 1.36}
   m_LocalScale: {x: 2.928092, y: 2.9280922, z: 2.9280922}
   m_Children: []
   m_Father: {fileID: 0}
@@ -563,7 +563,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 621047936}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7b80d521c2a212a45b791bd2d80ec42b, type: 3}
   m_Name: 
@@ -572,6 +572,7 @@ MonoBehaviour:
   jumpForce: 1.2
   planetType: 2
   rotationSpeed: 2
+  isGrounded: 0
 --- !u!65 &621047938
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -599,6 +600,22 @@ CapsuleCollider:
   m_Height: 5.75021
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &621047940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 621047936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdb827cb02ef1084fb3a6a88165e7fed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Planet: {fileID: 0}
+  PlayerPlaceholder: {fileID: 0}
+  speed: 4
+  JumpHeight: 1.2
 --- !u!54 &621047942
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -844,8 +861,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.7751, y: 1.24, z: -5.77}
   m_LocalScale: {x: 0.085695066, y: 0.08569518, z: 0.08569518}
-  m_Children:
-  - {fileID: 3288437}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -865,6 +881,7 @@ MonoBehaviour:
   jumpForce: 1.2
   planetType: 0
   rotationSpeed: 10
+  isGrounded: 0
 --- !u!65 &1266865525
 BoxCollider:
   m_ObjectHideFlags: 0
