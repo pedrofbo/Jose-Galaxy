@@ -15,9 +15,14 @@ public class TutorialPlayer : MonoBehaviour
     float gravity = 100;
     public bool OnGround = false;
 
+    public bool isGrounded;
+
 
     float distanceToGround;
     Vector3 Groundnormal;
+
+    CapsuleCollider col;
+    public LayerMask groundLayers;
 
 
 
@@ -28,11 +33,13 @@ public class TutorialPlayer : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+        col = GetComponent<CapsuleCollider>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        isGrounded = IsGrounded();
 
         //MOVEMENT
 
@@ -92,7 +99,7 @@ public class TutorialPlayer : MonoBehaviour
 
         if (OnGround == false)
         {
-            rb.AddForce(gravDirection * -gravity);
+            // rb.AddForce(gravDirection * -gravity);
 
         }
 
@@ -129,5 +136,12 @@ public class TutorialPlayer : MonoBehaviour
         }
     }
 
+    private bool IsGrounded()
+    {
+        return Physics.CheckCapsule(col.bounds.center,
+            new Vector3(col.bounds.center.x, col.bounds.min.y, col.bounds.center.z),
+            col.radius * .8f,
+            groundLayers);
+    }
 
 }
