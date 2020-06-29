@@ -207,13 +207,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3288432}
-  m_LocalRotation: {x: 0.27631482, y: -0, z: -0, w: 0.9610672}
-  m_LocalPosition: {x: 1.1496285, y: 4.556675, z: -7.5559545}
-  m_LocalScale: {x: 6.212416, y: 6.21242, z: 6.21242}
+  m_LocalRotation: {x: 0.23724918, y: 0.27084777, z: -0.07477452, w: 0.92992646}
+  m_LocalPosition: {x: -2.5, y: 3.81, z: -2.56}
+  m_LocalScale: {x: 0.96298033, y: 0.9629809, z: 0.9629809}
   m_Children: []
-  m_Father: {fileID: 621047941}
-  m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 32.081, y: 0, z: 0}
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 28.8, y: 32.3, z: -0.69}
 --- !u!114 &3288438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -332,7 +332,7 @@ GameObject:
   - component: {fileID: 540487714}
   - component: {fileID: 540487713}
   - component: {fileID: 540487712}
-  - component: {fileID: 540487716}
+  - component: {fileID: 540487711}
   m_Layer: 0
   m_Name: IcePlanet
   m_TagString: Untagged
@@ -340,6 +340,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!135 &540487711
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 540487710}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.04
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &540487712
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -415,19 +428,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &540487716
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 540487710}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb48f8b269c50c04497b43e46a3566b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  planetType: 1
 --- !u!1 &579481929
 GameObject:
   m_ObjectHideFlags: 0
@@ -439,14 +439,14 @@ GameObject:
   - component: {fileID: 579481930}
   - component: {fileID: 579481932}
   - component: {fileID: 579481931}
-  - component: {fileID: 579481933}
+  - component: {fileID: 579481934}
   m_Layer: 0
   m_Name: Gravity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &579481930
 Transform:
   m_ObjectHideFlags: 0
@@ -482,7 +482,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 579481929}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &579481933
+--- !u!114 &579481934
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -491,10 +491,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 579481929}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2c93300a4f1cd24ea3a8373839c2eef, type: 3}
+  m_Script: {fileID: 11500000, guid: eb48f8b269c50c04497b43e46a3566b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Gravity: 0
+  planetType: 1
 --- !u!1001 &621047935
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -505,17 +505,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 9b88aae9c0adef54ab4ff2a7da04399f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.008
+      value: -1.314
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9b88aae9c0adef54ab4ff2a7da04399f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.519
+      value: 2.555
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9b88aae9c0adef54ab4ff2a7da04399f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.345
+      value: 1.21
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9b88aae9c0adef54ab4ff2a7da04399f,
         type: 3}
@@ -632,18 +632,20 @@ MonoBehaviour:
   planetType: 2
   rotationSpeed: 2
   isGrounded: 0
---- !u!114 &621047938
-MonoBehaviour:
+--- !u!136 &621047938
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 621047936}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1c27cf6caa1f434d856577832c78401, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Radius: 1.83
+  m_Height: 5.75021
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.7, z: 0}
 --- !u!136 &621047939
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -654,10 +656,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 1.4336323
+  m_Radius: 1.83
   m_Height: 5.75021
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.7, z: 0}
 --- !u!114 &621047940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -670,7 +672,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb827cb02ef1084fb3a6a88165e7fed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Planet: {fileID: 540487710}
+  Planet: {fileID: 579481929}
   PlayerPlaceholder: {fileID: 0}
   speed: 4
   JumpHeight: 1.2
@@ -679,12 +681,6 @@ MonoBehaviour:
   groundLayers:
     serializedVersion: 2
     m_Bits: 1
---- !u!4 &621047941 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9b88aae9c0adef54ab4ff2a7da04399f,
-    type: 3}
-  m_PrefabInstance: {fileID: 621047935}
-  m_PrefabAsset: {fileID: 0}
 --- !u!54 &621047942
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -699,36 +695,8 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &621047943
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 621047936}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7d2e00d327906949ad4cee06d17aabc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  JumpForce: 1.2
-  Speed: 4
---- !u!114 &621047944
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 621047936}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b6e0698515e3a0478c86dde13e9904c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Gravity: {fileID: 0}
-  RotationSpeed: 20
 --- !u!1 &891743418
 GameObject:
   m_ObjectHideFlags: 0
@@ -759,7 +727,7 @@ BoxCollider:
   m_GameObject: {fileID: 891743418}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 18.045214, z: 1}
   m_Center: {x: 0, y: 8.522607, z: 0}
@@ -1024,7 +992,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.7318287
+  m_Radius: 0.76
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &1284807799
 SphereCollider:

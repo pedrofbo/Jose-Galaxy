@@ -12,7 +12,7 @@ public class TutorialPlayer : MonoBehaviour
     public float speed = 4;
     public float JumpHeight = 1.2f;
 
-    float gravity = 100;
+    float gravity = 100f;
     public bool OnGround = false;
 
     public bool isGrounded;
@@ -24,6 +24,8 @@ public class TutorialPlayer : MonoBehaviour
     CapsuleCollider col;
     public LayerMask groundLayers;
 
+    private Animator animator;
+
 
 
     private Rigidbody rb;
@@ -34,11 +36,13 @@ public class TutorialPlayer : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         col = GetComponent<CapsuleCollider>();
+        animator = gameObject.GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        Vector2 input;
         isGrounded = IsGrounded();
 
         //MOVEMENT
@@ -61,14 +65,23 @@ public class TutorialPlayer : MonoBehaviour
             transform.Rotate(0, -150 * Time.deltaTime, 0);
         }
 
+        if (x != 0 || z != 0)
+        {
+            animator?.SetInteger("AnimPlayer", 1);
+        }
+        else
+        {
+            animator?.SetInteger("AnimPlayer", 0);
+        }
+
         //Jump
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            // animator?.SetInteger("AnimPlayer", 2);
             rb.AddForce(transform.up * 40000 * JumpHeight * Time.deltaTime);
 
         }
-
 
 
         //GroundControl
@@ -80,7 +93,7 @@ public class TutorialPlayer : MonoBehaviour
             distanceToGround = hit.distance;
             Groundnormal = hit.normal;
 
-            if (distanceToGround <= 0.5f)
+            if (distanceToGround <= 0.4f)
             {
                 OnGround = true;
             }
@@ -99,7 +112,7 @@ public class TutorialPlayer : MonoBehaviour
 
         if (OnGround == false)
         {
-            // rb.AddForce(gravDirection * -gravity);
+            rb.AddForce(gravDirection * -gravity);
 
         }
 
@@ -119,7 +132,6 @@ public class TutorialPlayer : MonoBehaviour
     {
         if (collision.transform != Planet.transform)
         {
-
             Planet = collision.transform.gameObject;
 
             Vector3 gravDirection = (transform.position - Planet.transform.position).normalized;
