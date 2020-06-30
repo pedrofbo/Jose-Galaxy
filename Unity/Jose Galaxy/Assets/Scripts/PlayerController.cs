@@ -33,6 +33,8 @@ public class PlayerController : MonoBehaviour
     public float rotationSpeed = 10f;
     float distToGround;
 
+    public float floatJumpForce = 0.5f;
+
 
 
     private Rigidbody rb;
@@ -103,7 +105,10 @@ public class PlayerController : MonoBehaviour
 
         gravDir = gravityDirection.normalized;
 
-        rb.AddForce(gravityDirection * -gravity);
+        if (!Input.GetKey(KeyCode.B))
+        {
+            rb.AddForce(gravityDirection * -gravity);
+        }
 
         //
         Quaternion toRotation = Quaternion.FromToRotation(transform.up, Groundnormal) * transform.rotation;
@@ -242,6 +247,16 @@ public class PlayerController : MonoBehaviour
             animator?.SetBool("is_in_air", true);
             animator?.SetBool("jump_init", false);
         }
+
+        float addJumpForce = 0f;
+
+        if (Input.GetKey(KeyCode.B))
+        {
+            addJumpForce = floatJumpForce;
+            animator?.SetBool("jump_init", true);
+        }
+
+        transform.Translate(0, addJumpForce, 0);
     }
 
 }

@@ -18,8 +18,8 @@ public class PlayerPlaceholder : MonoBehaviour
         //SMOOTH
 		
         //POSITION
-        transform.position = Vector3.Lerp(transform.position, Player.transform.position, 0.1f);
-        //transform.position = Player.transform.position;
+        //transform.position = Vector3.Lerp(transform.position, Player.transform.position, 0.1f);
+        transform.position = Player.transform.position;
 
         /*speed = Player.GetComponent<TutorialPlayer>().speed;
         float x = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
