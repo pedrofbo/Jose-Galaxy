@@ -32,6 +32,7 @@ public class TutorialPlayer : MonoBehaviour
     private float angle;
     private Transform cam;
     public float rotationSpeed = 10f;
+    float distToGround;
 
 
 
@@ -46,10 +47,11 @@ public class TutorialPlayer : MonoBehaviour
         animator = gameObject.GetComponentInChildren<Animator>();
         //Planet = GameObject.Find("initialPlatform");
         cam = PlayerPlaceholder.transform;
+        distToGround = col.bounds.extents.y;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //Vector2 input;
         isGrounded = IsGrounded();
@@ -84,7 +86,7 @@ public class TutorialPlayer : MonoBehaviour
             distanceToGround = hit.distance;
             Groundnormal = hit.normal;
 
-            if (distanceToGround <= 0.5f)
+            if (distanceToGround <= 1f)
             {
                 OnGround = true;
             }
@@ -159,10 +161,11 @@ public class TutorialPlayer : MonoBehaviour
 
     private bool IsGrounded()
     {
-        return Physics.CheckCapsule(col.bounds.center,
-            new Vector3(col.bounds.center.x, col.bounds.min.y, col.bounds.center.z),
-            col.radius * .8f,
-            groundLayers);
+        // return Physics.CheckCapsule(col.bounds.center,
+        //     new Vector3(col.bounds.center.x, col.bounds.min.y, col.bounds.center.z),
+        //     col.radius * .8f,
+        //     groundLayers);
+        return Physics.Raycast(transform.position, -Vector3.up, distToGround + 0.1f);
     }
 
     private void Move()
