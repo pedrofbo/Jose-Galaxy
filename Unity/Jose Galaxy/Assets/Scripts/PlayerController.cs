@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     public int Score = 0;
+
+    public Text ScoreText;
     public GameObject Planet;
     public GameObject PlayerPlaceholder;
     public PlanetType planetType;
@@ -45,10 +48,15 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
-        col = GetComponent<CapsuleCollider>();
+
         animator = gameObject.GetComponentInChildren<Animator>();
+
+        col = GetComponent<CapsuleCollider>();
+
         cam = PlayerPlaceholder.transform;
         distToGround = col.bounds.extents.y;
+
+        SetScoreText();
     }
 
     // Update is called once per frame
@@ -70,6 +78,7 @@ public class PlayerController : MonoBehaviour
 
         Jump();
 
+        SetScoreText();
 
         //GroundControl
 
@@ -258,6 +267,11 @@ public class PlayerController : MonoBehaviour
         }
 
         transform.Translate(0, addJumpForce, 0);
+    }
+
+    private void SetScoreText()
+    {
+        ScoreText.text = "Points: " + Score.ToString();
     }
 
 }
