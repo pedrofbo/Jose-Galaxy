@@ -4714,7 +4714,7 @@ MonoBehaviour:
   gravDir: {x: 0, y: 0, z: 0}
   speed: 4
   JumpHeight: 1.5
-  gravity: 800
+  gravity: 10
   OnGround: 0
   isGrounded: 0
   groundLayers:
