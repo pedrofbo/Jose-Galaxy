@@ -282,7 +282,7 @@ public class PlayerController : MonoBehaviour
         {
             animator?.SetBool("is_in_air", false);
         }
-        else
+        else if (!Input.GetKey(KeyCode.Space))
         {
             animator?.SetBool("is_in_air", true);
             animator?.SetBool("jump_init", false);
