@@ -103,7 +103,7 @@ public class PlayerController : MonoBehaviour
 
         gravDir = gravityDirection.normalized;
 
-        if (!Input.GetKey(KeyCode.B))
+        if (!Input.GetKey(KeyCode.Space))
         {
             rb.AddForce(gravityDirection * -gravity);
         }
