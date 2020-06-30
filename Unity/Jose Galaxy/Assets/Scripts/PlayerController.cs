@@ -111,9 +111,11 @@ public class PlayerController : MonoBehaviour
         }
 
         //
-        Quaternion toRotation = Quaternion.FromToRotation(transform.up, Groundnormal) * transform.rotation;
+        Quaternion toRotation = Quaternion.FromToRotation(transform.up, /*Groundnormal*/ gravityDirection) * transform.rotation;
         transform.rotation = toRotation;
 
+        //reset rotation in case of bugs
+        ResetRotation(gravityDirection);
 
 
     }
@@ -302,5 +304,18 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.R))
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+    #endregion
+
+    #region bug fixes
+
+    private void ResetRotation(Vector3 gravityDirection)
+    {
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            Quaternion toRotation = Quaternion.FromToRotation(transform.up, gravityDirection) * transform.rotation;
+            transform.rotation = toRotation;
+        }
+    }
+
     #endregion
 }

@@ -21,7 +21,7 @@ public class CameraTest : MonoBehaviour
         {
 
             transform.RotateAround(target.transform.position, transform.up, Input.GetAxis("Mouse X") * xSpeed);
-            // transform.RotateAround(target.transform.position, transform.right, -Input.GetAxis("Mouse Y") * xSpeed);
+            transform.RotateAround(target.transform.position, transform.right, -Input.GetAxis("Mouse Y") * xSpeed);
 
         }
 
