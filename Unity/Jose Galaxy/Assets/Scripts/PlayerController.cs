@@ -231,7 +231,16 @@ public class PlayerController : MonoBehaviour
         {
             // animator?.SetInteger("AnimPlayer", 2);
             rb.AddForce(transform.up * 1000 * JumpHeight, ForceMode.Impulse);
-
+            animator?.SetBool("jump_init", true);
+        }
+        if (OnGround) 
+        {
+            animator?.SetBool("is_in_air", false);
+        }
+        else 
+        {
+            animator?.SetBool("is_in_air", true);
+            animator?.SetBool("jump_init", false);
         }
     }
 
