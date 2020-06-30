@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
@@ -35,10 +36,8 @@ public class PlayerController : MonoBehaviour
     private float angle;
     private Transform cam;
     public float rotationSpeed = 10f;
-    float distToGround;
 
     public float floatJumpForce = 0.5f;
-
 
 
     private Rigidbody rb;
@@ -54,7 +53,6 @@ public class PlayerController : MonoBehaviour
         col = GetComponent<CapsuleCollider>();
 
         cam = PlayerPlaceholder.transform;
-        distToGround = col.bounds.extents.y;
 
         SetScoreText();
     }
@@ -62,23 +60,14 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Vector2 input;
-        isGrounded = IsGrounded();
 
-        /*if (planetType == planetType.Spherical)
-        {
-            MoveSphere();
-        }
-        else
-        {
-            Move();
-        }*/
-
-        Move2();
+        SimpleMove();
 
         Jump();
 
         SetScoreText();
+
+        CheckRestart();
 
         //GroundControl
 
@@ -102,7 +91,6 @@ public class PlayerController : MonoBehaviour
         }
 
         //GRAVITY and ROTATION
-
         Vector3 gravityDirection;
         if (planetType == PlanetType.Spherical)
         {
@@ -128,9 +116,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-
     //CHANGE PLANET
-
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.transform != Planet.transform && collision.GetComponent<Planet>())
@@ -165,10 +151,13 @@ public class PlayerController : MonoBehaviour
         //     new Vector3(col.bounds.center.x, col.bounds.min.y, col.bounds.center.z),
         //     col.radius * .8f,
         //     groundLayers);
-        return Physics.Raycast(transform.position, -Vector3.up, distToGround + 0.1f);
+        return true;
     }
 
-    private void Move()
+
+    #region Move
+
+    private void ComplexMove()
     {
         Vector2 input;
         //get inputs
@@ -208,7 +197,7 @@ public class PlayerController : MonoBehaviour
         //transform.position += transform.forward * speed * Time.deltaTime;
     }
 
-    private void Move2()
+    private void SimpleMove()
     {
         //MOVEMENT
 
@@ -239,15 +228,42 @@ public class PlayerController : MonoBehaviour
             animator?.SetInteger("AnimPlayer", 0);
         }
     }
+    #endregion
 
+    #region Jump
     private void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        FlyJump();
+        JumpAnimation();
+        SimpleJump();
+    }
+
+    private void FlyJump()
+    {
+        float addJumpForce = 0f;
+
+        if (Input.GetKey(KeyCode.Space))
         {
-            // animator?.SetInteger("AnimPlayer", 2);
+            addJumpForce = floatJumpForce;
+            animator?.SetBool("jump_init", true);
+        }
+
+        transform.Translate(0, addJumpForce, 0);
+    }
+
+    private void SimpleJump()
+    {
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            animator?.SetBool("jump_init", true);
             rb.AddForce(transform.up * 1000 * JumpHeight, ForceMode.Impulse);
             animator?.SetBool("jump_init", true);
         }
+    }
+
+    private void JumpAnimation()
+    {
+        // animation
         if (OnGround)
         {
             animator?.SetBool("is_in_air", false);
@@ -257,21 +273,22 @@ public class PlayerController : MonoBehaviour
             animator?.SetBool("is_in_air", true);
             animator?.SetBool("jump_init", false);
         }
-
-        float addJumpForce = 0f;
-
-        if (Input.GetKey(KeyCode.B))
-        {
-            addJumpForce = floatJumpForce;
-            animator?.SetBool("jump_init", true);
-        }
-
-        transform.Translate(0, addJumpForce, 0);
     }
 
+    #endregion
+
+    #region UI
     private void SetScoreText()
     {
         ScoreText.text = "Points: " + Score.ToString();
     }
+    #endregion
 
+    #region Game Life Cycle
+    private void CheckRestart()
+    {
+        if (Input.GetKey(KeyCode.R))
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    #endregion
 }
