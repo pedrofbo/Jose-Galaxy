@@ -9198,12 +9198,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Avatar
       value: 
-      objectReference: {fileID: 9000000, guid: 9b88aae9c0adef54ab4ff2a7da04399f, type: 3}
+      objectReference: {fileID: 9000000, guid: 81f6ec0ef78e67540831020144387e87, type: 3}
     - target: {fileID: 5866666021909216657, guid: 81f6ec0ef78e67540831020144387e87,
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 70bedbc26cd8ca1498ac7cd5ddb81ce2, type: 2}
+      objectReference: {fileID: 9100000, guid: a8aba301504f7ee4cbc05e0d93497d0c, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 81f6ec0ef78e67540831020144387e87,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81f6ec0ef78e67540831020144387e87, type: 3}
 --- !u!1 &1776738182
