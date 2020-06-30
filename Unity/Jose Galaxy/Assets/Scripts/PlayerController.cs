@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     public Vector3 gravDir;
 
     public float speed = 8f;
+    public float runSpeed = 20f;
+    float moveSpeed = 8f;
     public float JumpHeight = 5f;
 
     public float gravity = 1000f;
@@ -201,8 +203,8 @@ public class PlayerController : MonoBehaviour
     {
         //MOVEMENT
 
-        float x = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
-        float z = Input.GetAxis("Vertical") * Time.deltaTime * speed;
+        float x = Input.GetAxis("Horizontal") * Time.deltaTime * moveSpeed;
+        float z = Input.GetAxis("Vertical") * Time.deltaTime * moveSpeed;
 
         transform.Translate(x, 0, z);
 
@@ -210,7 +212,6 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.E))
         {
-
             transform.Rotate(0, 150 * Time.deltaTime, 0);
         }
         if (Input.GetKey(KeyCode.Q))
@@ -219,9 +220,20 @@ public class PlayerController : MonoBehaviour
             transform.Rotate(0, -150 * Time.deltaTime, 0);
         }
 
+
         if (x != 0 || z != 0)
         {
             animator?.SetInteger("AnimPlayer", 1);
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                animator?.SetBool("is_running", true);
+                moveSpeed = runSpeed;
+            }
+            else
+            {
+                animator?.SetBool("is_running", false);
+                moveSpeed = speed;
+            }
         }
         else
         {

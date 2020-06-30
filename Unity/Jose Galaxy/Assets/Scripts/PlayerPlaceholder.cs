@@ -29,11 +29,11 @@ public class PlayerPlaceholder : MonoBehaviour
  
         //Local Rotation
  
-        if (Input.GetKey(KeyCode.E)) {
+        if (Input.GetKey(KeyCode.E) || Input.GetKey(KeyCode.P)) {
  
             transform.Rotate(0, 150 * Time.deltaTime, 0);
         }
-        if (Input.GetKey(KeyCode.Q))
+        if (Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.O))
         {
  
             transform.Rotate(0, -150 * Time.deltaTime, 0);
