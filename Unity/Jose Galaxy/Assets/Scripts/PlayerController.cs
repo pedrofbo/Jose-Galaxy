@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public int Score = 0;
     public GameObject Planet;
     public GameObject PlayerPlaceholder;
     public PlanetType planetType;
@@ -238,11 +239,11 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(transform.up * 1000 * JumpHeight, ForceMode.Impulse);
             animator?.SetBool("jump_init", true);
         }
-        if (OnGround) 
+        if (OnGround)
         {
             animator?.SetBool("is_in_air", false);
         }
-        else 
+        else
         {
             animator?.SetBool("is_in_air", true);
             animator?.SetBool("jump_init", false);

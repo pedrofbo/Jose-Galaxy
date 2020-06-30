@@ -3,7 +3,17 @@ guid: 64f61e6f1a641f4438c6e2befb91bb5d
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: powerMat
+    second: {fileID: 2100000, guid: 8821d2ae3f655e5408482009d28aa485, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: shineMat
+    second: {fileID: 2100000, guid: 6d7afdc53423bed4c93949d1ab04f84e, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
