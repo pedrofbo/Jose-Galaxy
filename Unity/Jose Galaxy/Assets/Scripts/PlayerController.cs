@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
     public GameObject Planet;
     public GameObject PlayerPlaceholder;
     public PlanetType planetType;
@@ -14,7 +13,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 8f;
     public float JumpHeight = 5f;
 
-    public float gravity = 100f;
+    public float gravity = 1000f;
     public bool OnGround = false;
 
     public bool isGrounded;
@@ -45,13 +44,12 @@ public class PlayerController : MonoBehaviour
         rb.freezeRotation = true;
         col = GetComponent<CapsuleCollider>();
         animator = gameObject.GetComponentInChildren<Animator>();
-        //Planet = GameObject.Find("initialPlatform");
         cam = PlayerPlaceholder.transform;
         distToGround = col.bounds.extents.y;
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         //Vector2 input;
         isGrounded = IsGrounded();
@@ -67,14 +65,7 @@ public class PlayerController : MonoBehaviour
 
         Move2();
 
-        //Jump
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            // animator?.SetInteger("AnimPlayer", 2);
-            rb.AddForce(transform.up * 8000 * JumpHeight * Time.deltaTime);
-
-        }
+        Jump();
 
 
         //GroundControl
@@ -98,7 +89,6 @@ public class PlayerController : MonoBehaviour
 
         }
 
-
         //GRAVITY and ROTATION
 
         Vector3 gravityDirection;
@@ -113,14 +103,9 @@ public class PlayerController : MonoBehaviour
 
         gravDir = gravityDirection.normalized;
 
-        //if (OnGround == false)
-        //{
         rb.AddForce(gravityDirection * -gravity);
 
-        //}
-
         //
-
         Quaternion toRotation = Quaternion.FromToRotation(transform.up, Groundnormal) * transform.rotation;
         transform.rotation = toRotation;
 
@@ -237,6 +222,16 @@ public class PlayerController : MonoBehaviour
         else
         {
             animator?.SetInteger("AnimPlayer", 0);
+        }
+    }
+
+    private void Jump()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            // animator?.SetInteger("AnimPlayer", 2);
+            rb.AddForce(transform.up * 1000 * JumpHeight, ForceMode.Impulse);
+
         }
     }
 

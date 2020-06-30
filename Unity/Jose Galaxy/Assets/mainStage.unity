@@ -4712,9 +4712,9 @@ MonoBehaviour:
   PlayerPlaceholder: {fileID: 576371788}
   planetType: 2
   gravDir: {x: 0, y: 0, z: 0}
-  speed: 4
-  JumpHeight: 1.5
-  gravity: 10
+  speed: 8
+  JumpHeight: 1
+  gravity: 500
   OnGround: 0
   isGrounded: 0
   groundLayers:
