@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TutorialPlayer : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
 
     public GameObject Planet;
@@ -11,8 +11,8 @@ public class TutorialPlayer : MonoBehaviour
 
     public Vector3 gravDir;
 
-    public float speed = 4;
-    public float JumpHeight = 1.2f;
+    public float speed = 8f;
+    public float JumpHeight = 5f;
 
     public float gravity = 100f;
     public bool OnGround = false;
@@ -115,7 +115,7 @@ public class TutorialPlayer : MonoBehaviour
 
         //if (OnGround == false)
         //{
-            rb.AddForce(gravityDirection * -gravity);
+        rb.AddForce(gravityDirection * -gravity);
 
         //}
 
