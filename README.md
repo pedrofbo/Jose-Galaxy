@@ -22,6 +22,7 @@ O escopo do game (José Galaxy) é de uma única fase (prova de conceito) que ex
 - `A`, `W`, `S`, `D` - Movimentos direcionais do personagem
 - `Space` - Enquanto pressionado personagem voa
 - `B` - Personagem pula (feature desencorajada em favor do voo)
+- `Shift` - Enquanto pressionado personagem corre
 - `Q`, `E` - Gira o personagem
 - `O`, `P` - Gira a câmera
 - `Mouse` - Gira a câmera
