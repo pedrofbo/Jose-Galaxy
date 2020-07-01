@@ -1,10 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class CameraTest : MonoBehaviour
+public class CameraController : MonoBehaviour
 {
-
     public GameObject target;
     public float xSpeed = 3.5f;
     float sensitivity = 17f;
